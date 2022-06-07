@@ -1,22 +1,31 @@
 import React from "react";
+import Dialogs from "../pages/Dialogs";
 import Login from "../pages/Login";
-import Event from '../pages/Event';
+import Profile from "../pages/Profile";
+import Users from "../pages/Users";
+
 
 export interface IRoute {
     path: string;
-    component: React.ComponentType;
-    exact?: boolean;
+    element: React.ComponentType;
+    
 }
 
 export enum RouteNames {
     LOGIN = '/login',
-    EVENT = '/'
+    PROFILE = '/profile',
+    USERS = '/users',
+    DIALOGS = '/dialogs',
+    NOPARAMS = '*'
 }
 
 export const publicRoutes: IRoute[] = [
-    {path: RouteNames.LOGIN, exact: true, component: Login}
+    {path: RouteNames.LOGIN,  element: Login},
+    {path: RouteNames.NOPARAMS, element: Login},
 ]
 
 export const privateRoutes: IRoute[] = [
-    {path: RouteNames.EVENT, exact: true, component: Event}
+    {path: RouteNames.PROFILE, element: Profile},
+    {path: RouteNames.DIALOGS, element: Dialogs},
+    {path: RouteNames.USERS, element: Users},
 ]

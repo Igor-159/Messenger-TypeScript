@@ -1,19 +1,18 @@
 import React, {FC, useState} from 'react';
 import {Button, Form, Input} from "antd";
 import {rules} from "../utils/rules";
-import {useDispatch} from "react-redux";
-import {AuthActionCreators} from "../store/reducers/auth/action-creators";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useActions} from "../hooks/useActions";
 
 const LoginForm: FC = () => {
     const {error, isLoading} = useTypedSelector(state => state.auth);
-    const [username, setUsername] = useState('')
+    const [email, setEmailname] = useState('')
     const [password, setPassword] = useState('')
     const {login} = useActions()
 
     const submit = () => {
-        login(username, password)
+        login(email, password)
+        console.log(email, password)
     }
 
     return (
@@ -24,13 +23,13 @@ const LoginForm: FC = () => {
                 {error}
             </div>}
             <Form.Item
-                label="Имя пользователя"
-                name="username"
-                rules={[rules.required("Пожалуйста введите имя пользователя!")]}
+                label="Email"
+                name="email"
+                rules={[rules.required("Пожалуйста введите email!")]}
             >
                 <Input
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
+                    value={email}
+                    onChange={e => setEmailname(e.target.value)}
                 />
             </Form.Item>
             <Form.Item

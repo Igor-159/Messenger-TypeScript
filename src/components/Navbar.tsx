@@ -1,50 +1,24 @@
-import React, {FC} from 'react';
-import {Layout, Menu, Row} from "antd";
-import {useHistory} from 'react-router-dom';
-import {RouteNames} from "../router";
-import {useTypedSelector} from "../hooks/useTypedSelector";
-import {AuthActionCreators} from "../store/reducers/auth/action-creators";
-import {useDispatch} from "react-redux";
-import {useActions} from "../hooks/useActions";
-
-const Navbar: FC = () => {
-    const router = useHistory()
-    const {isAuth, user} = useTypedSelector(state => state.auth);
-    const {logout} = useActions()
+import { FC } from "react";
+import { NavLink } from "react-router-dom";
 
 
+const NavBar: FC = () =>{
+    
     return (
-        <Layout.Header>
-            <Row justify="end">
-                {isAuth
-                    ?
-                    <>
-                        <div style={{color: 'white'}}>
-                            {user.username}
-                        </div>
-                        <Menu theme="dark" mode="horizontal" selectable={false}>
+        <div className='nav'>
+        
+                <ul>
+                    <li><NavLink to='/profile'>Profile</NavLink></li>
+                    <li><NavLink to='/dialogs'>Message</NavLink></li>
+                    <li><NavLink to='/users'>Users</NavLink></li>
+                    <li><NavLink to='/news'>News</NavLink></li>
+                    <li><NavLink to='/music'>Music</NavLink></li>
+                    <li><NavLink to='/settings'>Settings</NavLink></li>
 
-                            <Menu.Item
-                                onClick={logout}
-                                key={1}
-                            >
-                                Выйти
-                            </Menu.Item>
-                        </Menu>
-                    </>
-                    :
-                    <Menu theme="dark" mode="horizontal" selectable={false}>
-                        <Menu.Item
-                            onClick={() => router.push(RouteNames.LOGIN)}
-                            key={1}
-                        >
-                            Логин
-                        </Menu.Item>
-                    </Menu>
-                }
-            </Row>
-        </Layout.Header>
-    );
-};
+                </ul>
+        
+        </div>
+    )
+}
 
-export default Navbar;
+export default NavBar;

@@ -1,12 +1,13 @@
+import { IAuthUser } from "../../../models/IAuthUser";
 import {AuthAction, AuthActionEnum, AuthState} from "./types";
-import {IUser} from "../../../models/IUser";
+
 
 
 const initialState: AuthState = {
     isAuth: false,
     error: '',
     isLoading: false,
-    user: {} as IUser
+    user: {} as IAuthUser
 }
 
 export default function authReducer(state = initialState, action: AuthAction): AuthState {

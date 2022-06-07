@@ -1,7 +1,9 @@
-import auth from './auth'
-import event from './event';
+import auth from './auth';
+import users from './users';
+import profile from './profile';
 
 export default {
     auth,
-    event
+    users,
+    profile
 }
