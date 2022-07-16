@@ -2,7 +2,7 @@ import { FC } from "react"
 
 interface constactProps{
     contactTitle: string,
-    contactValue: any
+    contactValue: string
 }
 
 const Contact: FC<constactProps> = ({contactTitle, contactValue}) => {

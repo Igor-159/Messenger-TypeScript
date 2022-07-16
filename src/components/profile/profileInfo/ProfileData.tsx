@@ -10,6 +10,9 @@ interface ProfileDataProps{
 
 
 const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) =>{
+    
+
+    
     return   <div>  
                 <div>
                     {isOwner && <button onClick={goToEditMode}>edit</button>}
@@ -27,7 +30,8 @@ const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) =>{
                     About me: 
                 </div>
                 <div>
-                    Contact: {Object.keys(profile.contacts).map(key => {
+                    
+                    Contact: {Object.keys(profile.contacts).map(key  => {
                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                     })}
                 </div>

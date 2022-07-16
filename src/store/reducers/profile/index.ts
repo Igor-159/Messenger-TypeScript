@@ -8,57 +8,60 @@ const initialState: ProfileState = {
             {id: 4, message: "retijerfdjff", likesCount: 11},
         ],
     newPostText: "",
-    profile: {},
-    status: ''
+    profile: {
+        'userId': 0,
+        'lookingForAJob': false,
+        'lookingForAJobDescription': '',
+        'fullName': '',
+        'contacts':  {
+            'github' : '' , 
+            'vk': '',
+            'facebook': '',
+            'instagram': '',
+            'twitter': '',
+            'website': '',
+            'youtube': '',
+            'mainLink': '',
+        } ,
+        'photos': {
+            small: '',
+            large: ''
+    }
+    },
+    status: '',
+    error: ''
 };
 
 
-export default function profileReducer (state = initialState, action: ProfileAction) {
+export default function profileReducer (state = initialState, action: ProfileAction): ProfileState {
     
     switch(action.type)  {
-        case ProfileActionEnum.ADD_POST:{
+        case ProfileActionEnum.ADD_POST:
         let newPost ={
             id: 7,
             message: action.payload,
             likesCount: 0
         }
+        return{...state,newPostText: '',posts: [...state.posts, newPost]}
         
-        return{
-            ...state,
-                newPostText: '',
-                posts: [...state.posts, newPost]
-            }
-        }
-        case ProfileActionEnum.UPDATE_NEW_POST_TEXT:{
-        return{
-            ...state,
-                newPostText: action.payload
-        }
-        }
-        case ProfileActionEnum.SET_USER_PROFILE:{
-            return{
-                ...state,
-                    profile: action.payload 
-            }
-        }
-        case ProfileActionEnum.SET_STATUS:{
-            return{
-                ...state,
-                    status: action.payload
-                }
-            }
-        case ProfileActionEnum.DELETE_POST:{
-            return{
-                ...state,
-                    posts: state.posts.filter(p => p.id !== action.payload)
-                }
-            }
-        case ProfileActionEnum.SAVE_PHOTO_SUCCESS:{
-            return{
-                ...state,
-                    profile: {...state.profile, photos: action.payload}
-            }
-        }
+        case ProfileActionEnum.UPDATE_NEW_POST_TEXT:
+            return{...state, newPostText: action.payload}
+        
+        case ProfileActionEnum.SET_USER_PROFILE:
+            return{...state, profile: action.payload }
+        
+        case ProfileActionEnum.SET_STATUS:
+            return{...state, status: action.payload}
+            
+        case ProfileActionEnum.DELETE_POST:
+            return{...state, posts: state.posts.filter(p => p.id !== action.payload)}
+            
+        case ProfileActionEnum.SAVE_PHOTO_SUCCESS:
+            return{...state, profile: {...state.profile, photos: action.payload}}
+        
+        case ProfileActionEnum.SET_ERROR:
+            return{...state, error: action.payload}
+
         default:
              return state;
     }

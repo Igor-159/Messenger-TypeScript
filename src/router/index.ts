@@ -13,7 +13,7 @@ export interface IRoute {
 
 export enum RouteNames {
     LOGIN = '/login',
-    PROFILE = '/profile',
+    PROFILE = '/profile/:id',
     USERS = '/users',
     DIALOGS = '/dialogs',
     NOPARAMS = '*'

@@ -18,6 +18,7 @@ const MyHeader: FC = () => {
                     <>
                         <div style={{color: 'white'}}>
                             {user.login}
+                            {console.log(user.login)}
                         </div>
                         <Menu theme="dark" mode="horizontal" selectable={false}>
 

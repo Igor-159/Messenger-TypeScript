@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 
 
-const ProfileStatus = () => {
-    const {status} = useTypedSelector(state => state.profile);
-    const {updateStatus} = useActions
+interface ProfileStatusProps {
+    status: string,
+    updateStatus: (status: string) => void
+}
+
+const ProfileStatus: FC<ProfileStatusProps> = ({status, updateStatus}) => {
     const [editMode, setEditMode] = useState(false)
     const [newStatus, setNewStatus] = useState ('')
 
@@ -25,7 +26,7 @@ const ProfileStatus = () => {
         updateStatus(newStatus);
     }
 
-    const onStatusChange = (e) =>{
+    const onStatusChange = (e: ChangeEvent<HTMLInputElement> ) =>{
         setNewStatus(e.currentTarget.value);
     }
 

@@ -5,14 +5,12 @@ import './App.css';
 import {useActions} from "./hooks/useActions";
 import NavBar from './components/NavBar';
 import MyHeader from './components/MyHeader';
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 
 const App:FC = () => {
-    const {getAuthUserData} = useActions();
+    
 
-    useEffect(() => {
-        getAuthUserData()
-    }, [])
+    
 
     return (
         <Layout>

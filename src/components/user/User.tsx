@@ -22,19 +22,20 @@ const User: FC<userProps> = ({user, followingInProgress, follow, unfollow}) =>{
             <span>
                 <div>
                     <NavLink end to={'/profile/'+ user.id}>
-                    <img src={user.photos.small !=null ? user.photos.small : userPhoto} className='userPhoto'/>
+                    <img alt='UserPhoto' src={user.photos.small !=null ? user.photos.small : userPhoto} className='userPhoto'/>
                     </NavLink>
                 </div>
                 <div>
                     { (user.followed) 
-                    ?  <button disabled={followingInProgress.some(id => id ===user.id)} onClick={() => {
-                                        unfollow(user.id);
+                    ?  <button disabled={followingInProgress.some(id => id ===user.id)} 
+                                onClick={() => {unfollow(user.id);
                                         
                         }}>Unfollow</button> 
-                    : <button disabled={followingInProgress.some(id => id ===user.id)} onClick={() => {
-                                    follow(user.id);
+                    : <button disabled={followingInProgress.some(id => id ===user.id)} 
+                              onClick={() => {follow(user.id);
                                     
-                        }}>Follow</button>}
+                        }}>Follow</button>
+                    }
                     
                 </div>
             </span>

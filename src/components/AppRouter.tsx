@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
-import {privateRoutes, publicRoutes, RouteNames} from "../router";
+import {privateRoutes, publicRoutes} from "../router";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
 const AppRouter = () => {
@@ -19,6 +19,7 @@ const AppRouter = () => {
                 )}
                 
             </Routes>
+            
             :
             <Routes>
                 {publicRoutes.map(route =>

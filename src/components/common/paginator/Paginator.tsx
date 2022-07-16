@@ -35,7 +35,7 @@ const Paginator: FC<PaginatorProps> = (props) =>{
         {pages
             .filter(page => page >= leftPortionPageNumber && page <= rightPortionPageNumber)
             .map(page => {
-                return (<span key={page} className={currentPage === page ? 'selectedPage' : ''}
+                return (<span key={page} style={{cursor: "pointer"}} className={currentPage === page ? 'selectedPage' : ''}
                 onClick={(e) =>{onPageChanged(page)}}>{page}</span>)
                 })
         }

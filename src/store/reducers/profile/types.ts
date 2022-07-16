@@ -1,4 +1,4 @@
-import { ForInitializer } from "typescript";
+import { IProfile, photosProfile } from "../../../models/IProfile";
 
 interface Post {
     id: number, 
@@ -9,8 +9,9 @@ interface Post {
 export interface ProfileState {
     posts: Post[],
     newPostText: string,
-    profile: {},
-    status: string
+    profile: IProfile ,
+    status: string,
+    error: string
 }
 
 
@@ -21,6 +22,7 @@ export enum ProfileActionEnum {
     SET_STATUS  = 'SET_STATUS',
     DELETE_POST = 'DELETE_POST',
     SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS',
+    SET_ERROR = 'SET_ERROR'
 }
 
 export interface SetAddPostAction {
@@ -35,7 +37,7 @@ export interface SetUpdateNewPostTextAction {
 
 export interface SetUserProfileAction {
     type: ProfileActionEnum.SET_USER_PROFILE,
-    payload: {}
+    payload: IProfile
 }
 
 export interface SetStatusAction {
@@ -50,7 +52,12 @@ export interface DeletePostAction {
 
 export interface SavePhotoSuccessAction {
     type: ProfileActionEnum.SAVE_PHOTO_SUCCESS,
-    payload: File
+    payload: photosProfile
+}
+
+export interface SetErrorAction {
+   type: ProfileActionEnum.SET_ERROR,
+   payload: string 
 }
 
 export type ProfileAction = 
@@ -59,5 +66,6 @@ export type ProfileAction =
     SetUserProfileAction |
     SetStatusAction |
     DeletePostAction |
-    SavePhotoSuccessAction
+    SavePhotoSuccessAction |
+    SetErrorAction
 

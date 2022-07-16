@@ -26,6 +26,7 @@ requestUsers: (page: number, pageSize: number) =>{
 followUnfollowFlow: async (dispatch: AppDispatch, userId: number, apiMethod: any, actionCreator: any) =>{
     dispatch (UsersActionCreators.toggleFollowingProgress(true, userId));
     let response = await apiMethod(userId);
+  
     if(response.resultCode === 0){
     dispatch(actionCreator(userId))
     };
@@ -38,7 +39,7 @@ follow: (userId: number) =>{
 },
 unfollow: (userId: number) =>{
     return async(dispatch: AppDispatch) =>{
-        UsersActionCreators.followUnfollowFlow(dispatch, userId, UsersAPI.follow.bind(userId), UsersActionCreators.unfollowSuccess)
+        UsersActionCreators.followUnfollowFlow(dispatch, userId, UsersAPI.unfollow.bind(userId), UsersActionCreators.unfollowSuccess)
 }
 }
 }

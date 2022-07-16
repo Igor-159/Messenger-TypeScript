@@ -1,3 +1,4 @@
+import { Col, Layout, Row } from 'antd';
 import React, { FC, useEffect } from 'react';
 import Paginator from '../components/common/paginator/Paginator';
 import User from '../components/user/User';
@@ -17,26 +18,28 @@ const Users: FC = () => {
     }, [currentPage])
 
     return (
-        <div>
-            <Paginator 
-                currentPage={currentPage} 
-                onPageChanged={requestUsers}
-                totalItemsCount={totalUsersCount} 
-                pageSize={pageSize}
-            />
-            <div>
-                {
-                    users.map(user=> <User 
-                                        key={user.id} 
-                                        follow={follow} 
-                                        user={user} 
-                                        followingInProgress={followingInProgress}
-                                        unfollow={unfollow}
-                                    /> 
-                    )
-                }
-            </div>
-        </div>
+        <Layout>
+            <Row justify='center'>
+                <Paginator 
+                    currentPage={currentPage} 
+                    onPageChanged={requestUsers}
+                    totalItemsCount={totalUsersCount} 
+                    pageSize={pageSize}
+                />
+                <Col>
+                    {
+                        users.map(user=> <User 
+                                            key={user.id} 
+                                            follow={follow} 
+                                            user={user} 
+                                            followingInProgress={followingInProgress}
+                                            unfollow={unfollow}
+                                        /> 
+                        )
+                    }
+                </Col>
+            </Row>
+        </Layout>
     );
 };
 

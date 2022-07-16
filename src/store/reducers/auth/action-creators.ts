@@ -3,17 +3,20 @@ import {IAuthUser} from "../../../models/IAuthUser";
 import {AppDispatch} from "../../index";
 import {AuthAPI} from "../../../api/AuthAPI";
 
+
+
 export const AuthActionCreators = {
     setUser: (user: IAuthUser): SetUserAction => ({type: AuthActionEnum.SET_USER, payload: user}),
     setIsAuth: (auth: boolean): SetAuthAction => ({type: AuthActionEnum.SET_AUTH, payload: auth}),
     setIsLoading: (payload: boolean): SetIsLoadingAction => ({type: AuthActionEnum.SET_IS_LOADING, payload}),
     setError: (payload: string): SetErrorAction => ({type: AuthActionEnum.SET_ERROR, payload}),
-    getAuthUserData: () =>async (dispatch: AppDispatch) =>{
+    getAuthUserData: (): any =>async (dispatch: AppDispatch) =>{
         const response = await AuthAPI.getMe();
-                  
-        if(response.data.resultCode === 0){
         
-        dispatch(AuthActionCreators.setUser(response.data.data));
+                
+        if(response.data.resultCode === 0){
+        const user = response.data.data; 
+        dispatch(AuthActionCreators.setUser(user));
         dispatch(AuthActionCreators.setIsAuth(true))
         }     
     },
@@ -24,14 +27,7 @@ export const AuthActionCreators = {
             const response = await AuthAPI.login(email, password, rememberMe);
             
             if(response.data.resultCode === 0){
-                
-                const getMe = await AuthAPI.getMe();
-                const user = getMe.data;
-                if (user) {
-                    dispatch(AuthActionCreators.setUser(user));
-                    dispatch(AuthActionCreators.setIsAuth(true))
-            }
-            
+                dispatch(AuthActionCreators.getAuthUserData()) 
             } else {
                 dispatch(AuthActionCreators.setError('Некорректный логин или пароль'));
             }

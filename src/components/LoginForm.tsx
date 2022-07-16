@@ -41,7 +41,7 @@ const LoginForm: FC = () => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     type={"password"}
-                />
+                /> 
             </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit" loading={isLoading}>
