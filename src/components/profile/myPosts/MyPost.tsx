@@ -1,16 +1,17 @@
 import './myPost.css';
 import Post from './post/Post';
-import {FC, useState} from 'react'
+import {FC} from 'react'
 
-import { maxLengthCreator, required } from '../../../utils/validators/validator';
+
 
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import AddMyPostForm from './AddMyPostForm';
+import { Layout } from 'antd';
 
 
 
-const maxLength10 =  maxLengthCreator(10);
+
 
 
 const MyPost: FC =() =>{
@@ -25,7 +26,7 @@ const MyPost: FC =() =>{
     } ;
 
     return(
-        <div >
+        <Layout >
             My post
             <div>
                 <AddMyPostForm newPost={newPostBody}/>
@@ -34,7 +35,7 @@ const MyPost: FC =() =>{
                 {postsElement}
                 
             </div>
-        </div>
+        </Layout>
         
     )
 }

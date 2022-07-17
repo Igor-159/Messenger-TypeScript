@@ -3,7 +3,7 @@ import AppRouter from "./components/AppRouter";
 import { Layout } from 'antd';
 import './App.css';
 import {useActions} from "./hooks/useActions";
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar';
 import MyHeader from './components/MyHeader';
 const { Header, Sider, Content } = Layout;
 

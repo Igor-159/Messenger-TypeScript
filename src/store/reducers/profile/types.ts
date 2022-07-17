@@ -1,7 +1,7 @@
 import { IProfile, photosProfile } from "../../../models/IProfile";
 
 interface Post {
-    id: number, 
+    id: number , 
     message: string, 
     likesCount: number,
 }

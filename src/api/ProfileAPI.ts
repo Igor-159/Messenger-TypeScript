@@ -1,5 +1,5 @@
 import {AxiosResponse} from "axios";
-import { IProfile } from "../models/IProfile";
+import { IProfile } from "../models/IProfile" ;
 import { instance } from "./instance";
 
 
@@ -9,10 +9,10 @@ import { instance } from "./instance";
 
 export  class ProfileAPI {
     
-    static async getProfile(id:  number): Promise<AxiosResponse<IProfile>>{
+    static async getProfile(id:  number): Promise<AxiosResponse>{
         return instance.get(`profile/${id}`)
     }
-    static async getStatus(id: number): Promise<AxiosResponse<any>>{
+    static async getStatus(id: number): Promise<AxiosResponse>{
         
         return instance.get(`profile/status/${id}`)  
     }

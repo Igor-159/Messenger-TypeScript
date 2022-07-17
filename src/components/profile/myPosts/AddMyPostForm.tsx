@@ -11,18 +11,17 @@ interface AddMyPostFormProps{
 const AddMyPostForm: FC<AddMyPostFormProps> = ({newPost}) => {
     
     const [postText, setPostText] = useState<string>('')
-    
+    console.log(postText)
 
     const onSubmit = () => {
         newPost(postText)
-        
+        setPostText('')
     }
 
     return (
         <Form
             onFinish={onSubmit}
         >
-            
             <Form.Item
                 label="post"
                 name="post"
@@ -33,10 +32,9 @@ const AddMyPostForm: FC<AddMyPostFormProps> = ({newPost}) => {
                     onChange={e => setPostText(e.target.value)}
                 />
             </Form.Item>
-            
             <Form.Item>
                 <Button type="primary" htmlType="submit" >
-                    Войти
+                    Создать пост
                 </Button>
             </Form.Item>
         </Form>

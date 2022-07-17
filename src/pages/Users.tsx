@@ -1,4 +1,4 @@
-import { Col, Layout, Row } from 'antd';
+import { Col, Layout, Pagination, Row } from 'antd';
 import React, { FC, useEffect } from 'react';
 import Paginator from '../components/common/paginator/Paginator';
 import User from '../components/user/User';
@@ -17,9 +17,12 @@ const Users: FC = () => {
         requestUsers(currentPage, pageSize)
     }, [currentPage])
 
+    
+
     return (
         <Layout>
-            <Row justify='center'>
+            <Row >
+                
                 <Paginator 
                     currentPage={currentPage} 
                     onPageChanged={requestUsers}

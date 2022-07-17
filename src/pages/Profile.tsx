@@ -1,6 +1,6 @@
 import { Col, Layout, Row } from 'antd';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import MyPost from '../components/profile/myPosts/MyPost';
 import ProfileInfo from '../components/profile/profileInfo/ProfileInfo';
 import { useActions } from '../hooks/useActions';
@@ -16,8 +16,11 @@ const Profile = () => {
             getStatus,
             setError
             } = useActions();
+    
     let params =  Number(useParams().id);
-  console.log(profile)  
+    
+    
+    
     
     let isOwner = user.id === params
     

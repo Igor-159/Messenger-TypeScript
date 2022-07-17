@@ -18,7 +18,7 @@ export interface photosProfile {
 
 
 export interface IProfile {
-    'userId': number,
+    'userId': number ,
     'lookingForAJob': boolean,
     'lookingForAJobDescription': string,
     'fullName': string,

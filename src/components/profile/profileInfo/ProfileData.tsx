@@ -24,7 +24,7 @@ const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) =>{
                     Looking for a job: {profile.lookingForAJob ? "yes" : "no"}
                 </div>
                 <div>
-                    My professional skills: {profile.lookingForAJob ? "yes" : "no"}
+                    My professional skills: {profile.lookingForAJobDescription}
                 </div>
                 <div>
                     About me: 
