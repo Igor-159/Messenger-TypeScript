@@ -8,11 +8,12 @@ interface PaginatorProps{
     pageSize: number, 
     currentPage: number, 
     onPageChanged: any,
-    portionSize?: number
+    portionSize?: number,
+    isFetching: boolean
 }
 
 const Paginator: FC<PaginatorProps> = (props) =>{
-    const {totalItemsCount, pageSize, currentPage, onPageChanged} = props
+    const {totalItemsCount, pageSize, currentPage, onPageChanged, isFetching} = props
 
     
 
@@ -28,6 +29,7 @@ const Paginator: FC<PaginatorProps> = (props) =>{
                     current={currentPage}
                     onChange={onChange}
                     total={pagesCount}
+                    disabled={isFetching}
                 />
         )
     }

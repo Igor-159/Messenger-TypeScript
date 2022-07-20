@@ -10,7 +10,8 @@ const Users: FC = () => {
             currentPage, 
             totalUsersCount, 
             pageSize, 
-            followingInProgress} = useTypedSelector(state => state.users);
+            followingInProgress,
+            isFetching} = useTypedSelector(state => state.users);
     const {unfollow, requestUsers, follow} = useActions();
 
     useEffect(() => {
@@ -28,6 +29,7 @@ const Users: FC = () => {
                     onPageChanged={requestUsers}
                     totalItemsCount={totalUsersCount} 
                     pageSize={pageSize}
+                    isFetching={isFetching}
                 />
                 <Col>
                     {
