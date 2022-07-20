@@ -3,10 +3,11 @@ import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 
 interface ProfileStatusProps {
     status: string,
-    updateStatus: (status: string) => void
+    updateStatus: (status: string) => void,
+    isOwner: boolean
 }
 
-const ProfileStatus: FC<ProfileStatusProps> = ({status, updateStatus}) => {
+const ProfileStatus: FC<ProfileStatusProps> = ({status, updateStatus, isOwner}) => {
     const [editMode, setEditMode] = useState(false)
     const [newStatus, setNewStatus] = useState ('')
 
@@ -34,7 +35,7 @@ const ProfileStatus: FC<ProfileStatusProps> = ({status, updateStatus}) => {
         <>
             {!editMode &&
             <div>
-                <span onDoubleClick={activateEditMode}>{status || '-----'}</span>
+                <span onDoubleClick={isOwner ? activateEditMode : () => {}} >{status || '-----'}</span>
             </div>
             }
             {editMode &&

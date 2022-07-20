@@ -1,7 +1,6 @@
 import './profileInfo.css';
 import Spinner from '../../spinner/Spinner';
 import userPhoto from '../../../assets/images/i.jpg';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import { ChangeEvent, FC, useState } from 'react';
 import ProfileDataForm from './ProfileDataForm';
 import ProfileData from './ProfileData';
@@ -64,7 +63,7 @@ const ProfileInfo: FC<ProfileInfoProps> = ({profile,
                 <img alt='UserPhoto' src={profile.photos.large || userPhoto}/>
                 {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 </div>
-                <ProfileStatus status={status} updateStatus={updateStatus}/>
+                <ProfileStatus isOwner={isOwner} status={status} updateStatus={updateStatus}/>
                 <div className='profileInfoContainer'>   
                     <div className=''>
                         

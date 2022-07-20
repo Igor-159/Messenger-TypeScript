@@ -23,13 +23,14 @@ const AddMyPostForm: FC<AddMyPostFormProps> = ({newPost}) => {
             onFinish={onSubmit}
         >
             <Form.Item
-                label="post"
+                label="Post"
                 name="post"
                 rules={[rules.required("Пожалуйста введите post")]}
             >
                 <TextArea
                     value={postText}
                     onChange={e => setPostText(e.target.value)}
+                    autoSize={true}
                 />
             </Form.Item>
             <Form.Item>

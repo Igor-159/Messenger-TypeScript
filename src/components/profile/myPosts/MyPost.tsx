@@ -1,7 +1,7 @@
 import './myPost.css';
 import Post from './post/Post';
 import {FC} from 'react'
-
+import { Divider, List, Typography } from 'antd';
 
 
 import { useActions } from '../../../hooks/useActions';
@@ -27,14 +27,17 @@ const MyPost: FC =() =>{
 
     return(
         <Layout >
-            My post
-            <div>
+            
+            <div style={{marginTop: '20px'}}>
                 <AddMyPostForm newPost={newPostBody}/>
             </div>
-            <div className=''> 
-                {postsElement}
-                
-            </div>
+            <Divider orientation="left">My post</Divider>
+                <List
+                size="large"
+                bordered
+                dataSource={postsElement}
+                renderItem={item => <List.Item>{item}</List.Item>}
+                />
         </Layout>
         
     )
