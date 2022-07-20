@@ -59,9 +59,9 @@ const ProfileInfo: FC<ProfileInfoProps> = ({profile,
     return(
         <Layout>
             <Col>
-                <div>
-                <img alt='UserPhoto' src={profile.photos.large || userPhoto}/>
-                {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+                <div >
+                    <img alt='UserPhoto' src={profile.photos.large || userPhoto}/>
+                    {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
                 </div>
                 <ProfileStatus isOwner={isOwner} status={status} updateStatus={updateStatus}/>
                 <div className='profileInfoContainer'>   

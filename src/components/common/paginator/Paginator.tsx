@@ -19,7 +19,6 @@ const Paginator: FC<PaginatorProps> = (props) =>{
 
     let pagesCount = Math.ceil(totalItemsCount/ pageSize);
     const onChange: PaginationProps['onChange'] = (page: number) => {
-        console.log(page);
         onPageChanged(page);
       };
 
