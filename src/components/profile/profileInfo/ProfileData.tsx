@@ -1,3 +1,4 @@
+import { Button, Layout } from "antd"
 import { FC } from "react"
 import { IProfile } from "../../../models/IProfile"
 import Contact from "./ProfileContact"
@@ -13,9 +14,9 @@ const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) =>{
     
 
     
-    return   <div>  
+    return   <Layout>  
                 <div>
-                    {isOwner && <button onClick={goToEditMode}>edit</button>}
+                    {isOwner && <Button type="primary" onClick={goToEditMode}>edit</Button>}
                 </div>
                 <div>
                     fullName: {profile.fullName}
@@ -35,7 +36,7 @@ const ProfileData: FC<ProfileDataProps> = ({profile, isOwner, goToEditMode}) =>{
                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
                     })}
                 </div>
-                </div>
+                </Layout>
     }
 
     export default ProfileData

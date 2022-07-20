@@ -6,12 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login: FC = () => {
-    const {user} = useTypedSelector(state => state.auth)
-    const navigate = useNavigate()
-
-    
-        
-        
 
     return (
         <Layout>

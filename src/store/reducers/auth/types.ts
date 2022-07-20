@@ -4,7 +4,7 @@ export interface AuthState {
     isAuth: boolean;
     error: string;
     isLoading: boolean;
-    user: IAuthUser
+    user: IAuthUser 
 }
 
 export enum AuthActionEnum {

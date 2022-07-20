@@ -1,10 +1,16 @@
-import React from 'react';
-import {Route, Routes} from 'react-router-dom';
-import {privateRoutes, publicRoutes} from "../router";
+import React, { useEffect } from 'react';
+import {Route, Routes, useNavigate } from 'react-router-dom';
+import {privateRoutes, publicRoutes, RouteNames} from "../router";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 
+
 const AppRouter = () => {
-    const {isAuth} = useTypedSelector(state => state.auth);
+    const {isAuth, user} = useTypedSelector(state => state.auth);
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        navigate(`/profile/${user.id}`)   
+    },[isAuth])
 
     return (
         
@@ -16,8 +22,7 @@ const AppRouter = () => {
                            element={<route.element/>}
                            key={route.path}
                     />
-                )}
-                
+                )} 
             </Routes>
             
             :

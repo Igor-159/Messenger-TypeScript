@@ -39,6 +39,7 @@ export const AuthActionCreators = {
 
     logout : () => async (dispatch: AppDispatch) =>{
         let response = await AuthAPI.logout();
+        debugger
             if(response.data.resultCode === 0){
                 dispatch(AuthActionCreators.setUser({} as IAuthUser));
                 dispatch(AuthActionCreators.setIsAuth(false))

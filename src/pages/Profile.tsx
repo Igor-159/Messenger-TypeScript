@@ -5,6 +5,9 @@ import MyPost from '../components/profile/myPosts/MyPost';
 import ProfileInfo from '../components/profile/profileInfo/ProfileInfo';
 import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import Spinner from '../components/spinner/Spinner'
+
+
 
 const Profile = () => {
     const {profile, status, error} = useTypedSelector(state => state.profile);
@@ -19,9 +22,7 @@ const Profile = () => {
     
     let params =  Number(useParams().id);
     
-    
-    
-    
+
     let isOwner = user.id === params
     
     
@@ -31,8 +32,9 @@ const Profile = () => {
     }, [params]);
     
     
-
-
+    if(!profile) {
+        return <Spinner/>
+    }
     return (
         <Layout>
             <Row justify='center'>
